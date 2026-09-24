@@ -10,8 +10,9 @@ export default function App() {
 
     setLoading(true);
     try {
+      console.log('Sending text to server:', inputText);
       // Sends a POST request to your Vercel Serverless Function
-      const response = await fetch('/api/transform', {
+      const response = await fetch('/api/transform.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
