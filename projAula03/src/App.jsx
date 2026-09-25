@@ -29,8 +29,8 @@ export default function App() {
 
       console.log(data.result);
 
-      setResponseText('Aaaaaaaaaaa');
-      //setResponseText(data.result);
+      //setResponseText('Aaaaaaaaaaa');
+      setResponseText(data.result);
     } catch (error) {
       console.error('Error sending text:', error);
       setResponseText(error.message || 'Failed to get a response from the server.');
@@ -41,7 +41,7 @@ export default function App() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h2>Vercel React + Express Link 02</h2>
+      <h2>Vercel React + Express Link 03</h2>
       
       <textarea
         value={inputText}

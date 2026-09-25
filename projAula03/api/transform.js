@@ -1,9 +1,9 @@
 import express from 'express';
 import {GoogleGenAI} from '@google/genai';
 
-const apiKey = process.env.GEMINI_API_KEY;
-
-const ai = new GoogleGenAI({apiKey: apiKey});
+const ai = new GoogleGenAI({ 
+  apiKey: process.env.GEMINI_API_KEY 
+});
 
 async function main(pergunta) {
   const response = await ai.models.generateContent({
@@ -11,8 +11,14 @@ async function main(pergunta) {
     contents: pergunta,
   });
 
-  const processedApi = response.text;
-  return processedApi;
+  if (!process.env.GEMINI_API_KEY) {
+    return 'Missing API Key config';
+  } else {
+    const processedApi = response.text;
+    //return processedApi;
+    return 'Com chave!';
+  }
+  
 }
 
 const app = express();
