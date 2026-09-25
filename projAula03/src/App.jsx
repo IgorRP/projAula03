@@ -41,7 +41,7 @@ export default function App() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h2>Vercel React + Express Link 01</h2>
+      <h2>Vercel React + Express Link 02</h2>
       
       <textarea
         value={inputText}
