@@ -6,20 +6,13 @@ const ai = new GoogleGenAI({
 });
 
 async function main(pergunta) {
-  if (!process.env.GEMINI_API_KEY) {
-    return `Missing API Key config`;
-  }
-
   const response = await ai.models.generateContent({
     model: 'gemini-flash-latest',
     contents: pergunta,
   });
 
   const processedApi = response.text;
-  //return processedApi;
-  return `Com chave!`;
-
-  
+  return processedApi;
 }
 
 const app = express();
