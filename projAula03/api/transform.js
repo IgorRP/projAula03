@@ -30,7 +30,7 @@ app.post('/api/transform', (req, res) => {
   const processedText = main(userText);
   const processedText2 = `Server received your text! Reversed: ${userText.split('').reverse().join('')}`;
 
-  return res.json({ result: processedText2 });
+  return res.json({ result: processedText });
 });
 
 export default app;
