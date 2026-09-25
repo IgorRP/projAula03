@@ -1,7 +1,9 @@
 import express from 'express';
 import {GoogleGenAI} from '@google/genai';
 
-const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
+const apiKey = process.env.GEMINI_API_KEY;
+
+const ai = new GoogleGenAI({apiKey: apiKey});
 
 async function main(pergunta) {
   const response = await ai.models.generateContent({
