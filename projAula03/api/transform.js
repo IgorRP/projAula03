@@ -13,7 +13,7 @@ async function main(pergunta) {
 
   const processedText = JSON.stringify(response, null, 2);
   return processedText;
-  //console.log(response.text);
+  console.log(processedText);
 }
 
 const app = express();
@@ -28,9 +28,9 @@ app.post('/api/transform', (req, res) => {
   }
 
   const processedText = main(userText);
-  //const processedText = `Server received your text! Reversed: ${userText.split('').reverse().join('')}`;
+  const processedText2 = `Server received your text! Reversed: ${userText.split('').reverse().join('')}`;
 
-  return res.json({ result: processedText });
+  return res.json({ result: processedText2 });
 });
 
 export default app;
