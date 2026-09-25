@@ -1,4 +1,16 @@
 import express from 'express';
+import {GoogleGenAI} from '@google/genai';
+
+const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
+
+async function main(pergunta) {
+  const response = await ai.models.generateContent({
+    model: 'gemini-flash-latest',
+    contents: pergunta,
+  });
+  return response.text;
+  //console.log(response.text);
+}
 
 const app = express();
 
@@ -11,7 +23,8 @@ app.post('/api/transform', (req, res) => {
     return res.status(400).json({ error: 'No text provided' });
   }
 
-  const processedText = `Server received your text! Reversed: ${userText.split('').reverse().join('')}`;
+  const processedText = main(userText);
+  //const processedText = `Server received your text! Reversed: ${userText.split('').reverse().join('')}`;
 
   return res.json({ result: processedText });
 });
