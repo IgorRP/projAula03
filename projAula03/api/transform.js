@@ -10,7 +10,9 @@ async function main(pergunta) {
     model: 'gemini-flash-latest',
     contents: pergunta,
   });
-  return response.text;
+
+  const processedText = JSON.stringify(response, null, 2);
+  return processedText;
   //console.log(response.text);
 }
 
