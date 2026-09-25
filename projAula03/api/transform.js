@@ -12,11 +12,11 @@ async function main(pergunta) {
   });
 
   if (!process.env.GEMINI_API_KEY) {
-    return 'Missing API Key config';
+    return `Missing API Key config`;
   } else {
     const processedApi = response.text;
     //return processedApi;
-    return 'Com chave!';
+    return `Com chave!`;
   }
   
 }
