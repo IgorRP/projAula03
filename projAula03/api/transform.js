@@ -32,7 +32,7 @@ app.post('/api/transform', (req, res) => {
     return res.status(400).json({ error: 'No text provided' });
   }
 
-  const processedText = main(userText);
+  const processedText = await main(userText);
   const processedText2 = `Server received your text! Reversed: ${userText.split('').reverse().join('')}`;
 
   return res.json({ result: processedText });

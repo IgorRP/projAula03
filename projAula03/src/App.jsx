@@ -30,7 +30,7 @@ export default function App() {
       console.log(JSON.stringify(data.result, null, 2));
 
       //setResponseText('Aaaaaaaaaaa');
-      setResponseText(`<pre>`+JSON.stringify(data.result, null, 2)+`</pre>`);
+      setResponseText(JSON.stringify(data.result, null, 2));
     } catch (error) {
       console.error('Error sending text:', error);
       setResponseText(error.message || 'Failed to get a response from the server.');
@@ -41,7 +41,7 @@ export default function App() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h2>Vercel React + Express Link 04</h2>
+      <h2>Vercel React + Express Link 05</h2>
       
       <textarea
         value={inputText}
