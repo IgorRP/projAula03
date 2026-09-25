@@ -11,8 +11,8 @@ export default function App() {
     setLoading(true);
     try {
       console.log('Sending text to server:', inputText);
-      // Sends a POST request to your Vercel Serverless Function
-      const response = await fetch('/api/transform.js', {
+
+      const response = await fetch('/api/transform', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,11 +20,16 @@ export default function App() {
         body: JSON.stringify({ text: inputText }),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Request failed with status ${response.status}`);
+      }
+
       const data = await response.json();
-      setResponseText(data.result); // Updates the div with the server string
+      setResponseText(data.result);
     } catch (error) {
       console.error('Error sending text:', error);
-      setResponseText('Failed to get a response from the server.');
+      setResponseText(error.message || 'Failed to get a response from the server.');
     } finally {
       setLoading(false);
     }
