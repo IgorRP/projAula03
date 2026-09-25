@@ -11,9 +11,8 @@ async function main(pergunta) {
     contents: pergunta,
   });
 
-  const processedText = JSON.stringify(response, null, 2);
-  return processedText;
-  console.log(processedText);
+  const processedApi = response.text;
+  return processedApi;
 }
 
 const app = express();
